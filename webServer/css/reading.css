@@ -1,0 +1,114 @@
+body{
+    width: 100%;
+    overflow-x: hidden;
+    /*background-color: #FFFFF2;*/
+    padding-bottom: 100px;
+}
+
+#page-container{
+    position: relative;
+    padding-top: 1em;
+}
+#menu-box{
+    position: absolute;
+    top: 1em;
+    right: 0;
+}
+#menu-box .box{
+    float: right;
+}
+#menu-box .box .menu-item{
+    float: left;
+    padding: 15px;
+}
+
+@-webkit-keyframes flash-play /* Safari 和 Chrome */
+{
+    from {color: #3498DB;}
+    to {color: #000000;}
+}
+@-webkit-keyframes flash-pause /* Safari 和 Chrome */
+{
+    from {color: #3498DB;}
+    to {color: #000000;}
+}
+#play-button.fa-play{
+    -webkit-animation: flash-play 2s;
+}
+#play-button.fa-pause{
+    -webkit-animation: flash-pause 2s;
+}
+
+#chapter{
+    line-height: 200%;
+    font-size: 0.8em;
+}
+#chapter span{
+    margin-right: 15px;
+    color: #949494;
+}
+#content{
+    font-size: 1.2em;
+    line-height: 150%;
+    -webkit-column-width:475px;
+    -webkit-column-gap:30px;
+    -webkit-column-rule:1px #dddddd solid;
+    -webkit-column-rule-width:1px;
+    -webkit-column-count:2;
+    text-align: justify;
+    /*
+    height: 500px;
+    width: 1000px;
+    overflow: scroll;
+    */
+}
+#chapter span,#title span,#content span{
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    -webkit-perspective: 1000;
+    -moz-perspective: 1000;
+    -ms-perspective: 1000;
+    perspective: 1000;
+
+    /*background transition*/
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+
+    color: #989898;
+    margin-right: 0.5em;
+}
+
+#chapter span{
+    margin-right: 15px;
+    color: #949494;
+}
+
+#chapter span.highlight,#title span.highlight,#content span.highlight{
+    color: #288aff;
+}
+#chapter span.normal,#title span.normal,#content span.normal{
+    color: #989898;
+}
+
+.record-button{
+    font-size: 3em;
+    border: 1px solid #5cb85c;
+    color: #5cb85c;
+    border-radius: 50%;
+    text-align: center;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    margin-left: 100px;
+}
