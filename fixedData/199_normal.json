@@ -1,0 +1,267 @@
+[
+  {
+    "index": 1,
+    "content": "What are you working on?",
+    "start": 0,
+    "end": 1098,
+    "role": "Vicky",
+    "highlight": []
+  },
+  {
+    "index": 2,
+    "content": "If I tell you, will you promise not to laugh?",
+    "start": 1721,
+    "end": 4106,
+    "role": "Issac",
+    "highlight": [
+      {
+        "start": 24,
+        "end": 31
+      }
+    ]
+  },
+  {
+    "index": 3,
+    "content": "All right.",
+    "start": 4715,
+    "end": 5464,
+    "role": "Vicky",
+    "highlight": []
+  },
+  {
+    "index": 4,
+    "content": "What is it?",
+    "start": 5627,
+    "end": 6245,
+    "role": "Vicky",
+    "highlight": []
+  },
+  {
+    "index": 5,
+    "content": "It's a love letter to Julie.",
+    "start": 7072,
+    "end": 8499,
+    "role": "Issac",
+    "highlight": [
+      {
+        "start": 7,
+        "end": 18
+      }
+    ]
+  },
+  {
+    "index": 6,
+    "content": "Isn't it a little premature?",
+    "start": 9466,
+    "end": 10930,
+    "role": "Vicky",
+    "highlight": [
+      {
+        "start": 18,
+        "end": 27
+      }
+    ]
+  },
+  {
+    "index": 7,
+    "content": "You've only been going out for a month.",
+    "start": 11246,
+    "end": 12982,
+    "role": "Vicky",
+    "highlight": []
+  },
+  {
+    "index": 8,
+    "content": "Maybe, but I really want her to know how I feel.",
+    "start": 13772,
+    "end": 16247,
+    "role": "Issac",
+    "highlight": []
+  },
+  {
+    "index": 9,
+    "content": "Let me see it.",
+    "start": 17301,
+    "end": 17999,
+    "role": "Vicky",
+    "highlight": []
+  },
+  {
+    "index": 10,
+    "content": "\"Dear Julie.",
+    "start": 18599,
+    "end": 19477,
+    "role": "Vicky",
+    "highlight": []
+  },
+  {
+    "index": 11,
+    "content": "I'm writing this letter to pour my heart out to you.",
+    "start": 19648,
+    "end": 22092,
+    "role": "Vicky",
+    "highlight": [
+      {
+        "start": 24,
+        "end": 44
+      }
+    ]
+  },
+  {
+    "index": 12,
+    "content": "When we met, it was love at first sight and I can't get you out of my head.",
+    "start": 22718,
+    "end": 26569,
+    "role": "Vicky",
+    "highlight": [
+      {
+        "start": 46,
+        "end": 74
+      }
+    ]
+  },
+  {
+    "index": 13,
+    "content": "You mean everything to me.",
+    "start": 27114,
+    "end": 28411,
+    "role": "Vicky",
+    "highlight": [
+      {
+        "start": 4,
+        "end": 19
+      }
+    ]
+  },
+  {
+    "index": 14,
+    "content": "Now that we're together, how can I ever live without you?\"",
+    "start": 28983,
+    "end": 31847,
+    "role": "Vicky",
+    "highlight": []
+  },
+  {
+    "index": 15,
+    "content": "So, what do you think?",
+    "start": 32586,
+    "end": 33893,
+    "role": "Issac",
+    "highlight": []
+  },
+  {
+    "index": 16,
+    "content": "I thought it would have some simple sweet nothings.",
+    "start": 34735,
+    "end": 37309,
+    "role": "Vicky",
+    "highlight": [
+      {
+        "start": 36,
+        "end": 50
+      }
+    ]
+  },
+  {
+    "index": 17,
+    "content": "I didn't expect it to be this heavy.",
+    "start": 37381,
+    "end": 39107,
+    "role": "Vicky",
+    "highlight": [
+      {
+        "start": 30,
+        "end": 35
+      }
+    ]
+  },
+  {
+    "index": 18,
+    "content": "Do you think it needs more terms of endearment?",
+    "start": 40016,
+    "end": 42057,
+    "role": "Issac",
+    "highlight": [
+      {
+        "start": 27,
+        "end": 46
+      }
+    ]
+  },
+  {
+    "index": 19,
+    "content": "Maybe I should have called her \"my love,\" \"my darling,\" or \"sweetheart.\"",
+    "start": 42736,
+    "end": 46717,
+    "role": "Issac",
+    "highlight": []
+  },
+  {
+    "index": 20,
+    "content": "Tell me the truth, do you think it's too much?",
+    "start": 47231,
+    "end": 49555,
+    "role": "Issac",
+    "highlight": [
+      {
+        "start": 37,
+        "end": 45
+      }
+    ]
+  },
+  {
+    "index": 21,
+    "content": "I don't want to scare her off.",
+    "start": 49874,
+    "end": 51063,
+    "role": "Issac",
+    "highlight": [
+      {
+        "start": 16,
+        "end": 29
+      }
+    ]
+  },
+  {
+    "index": 22,
+    "content": "Well, I know you're head over heels in love with her, but if I were you, I'd play it by ear.",
+    "start": 52056,
+    "end": 57004,
+    "role": "Vicky",
+    "highlight": [
+      {
+        "start": 77,
+        "end": 91
+      }
+    ]
+  },
+  {
+    "index": 23,
+    "content": "Give it to her when you feel the time is right.",
+    "start": 57766,
+    "end": 59901,
+    "role": "Vicky",
+    "highlight": []
+  },
+  {
+    "index": 24,
+    "content": "Okay, thanks.",
+    "start": 60880,
+    "end": 61827,
+    "role": "Issac",
+    "highlight": []
+  },
+  {
+    "index": 25,
+    "content": "I'll try to play it cool, for now.",
+    "start": 62218,
+    "end": 64154,
+    "role": "Issac",
+    "highlight": [
+      {
+        "start": 9,
+        "end": 24
+      }
+    ]
+  }
+]
