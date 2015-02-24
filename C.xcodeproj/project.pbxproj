@@ -15,6 +15,8 @@
 		A11719CE1A98CBAF00815746 /* classListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11719CC1A98CBAF00815746 /* classListTableViewController.swift */; };
 		A11719D11A98CECA00815746 /* classListTableViewCellType0.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11719D01A98CECA00815746 /* classListTableViewCellType0.swift */; };
 		A11719D21A98CECA00815746 /* classListTableViewCellType0.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11719D01A98CECA00815746 /* classListTableViewCellType0.swift */; };
+		A11719EC1A9A5AE700815746 /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11719EB1A9A5AE700815746 /* testViewController.swift */; };
+		A11719EE1A9B6F1800815746 /* images in Resources */ = {isa = PBXBuildFile; fileRef = A11719ED1A9B6F1800815746 /* images */; };
 		A156486E1A979BF900A1D635 /* webServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A156486D1A979BF900A1D635 /* webServer.swift */; };
 		A15648751A97AAC300A1D635 /* webServer in Resources */ = {isa = PBXBuildFile; fileRef = A15648741A97AAC300A1D635 /* webServer */; };
 		F95673579E32518813FB4C72 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F956702AA32C0419734623EA /* Images.xcassets */; };
@@ -42,6 +44,8 @@
 		9321DAD084FF7E80C80E53E9 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A11719CC1A98CBAF00815746 /* classListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = classListTableViewController.swift; path = viewController/classListTableViewController.swift; sourceTree = "<group>"; };
 		A11719D01A98CECA00815746 /* classListTableViewCellType0.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = classListTableViewCellType0.swift; path = cell/classListTableViewCellType0.swift; sourceTree = "<group>"; };
+		A11719EB1A9A5AE700815746 /* testViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = testViewController.swift; path = viewController/testViewController.swift; sourceTree = "<group>"; };
+		A11719ED1A9B6F1800815746 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
 		A156486D1A979BF900A1D635 /* webServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = webServer.swift; sourceTree = "<group>"; };
 		A15648741A97AAC300A1D635 /* webServer */ = {isa = PBXFileReference; lastKnownFileType = folder; path = webServer; sourceTree = "<group>"; };
 		BDCD70D6E66136274E3C7ED4 /* Pods-CTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CTests/Pods-CTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -107,6 +111,7 @@
 			children = (
 				A11719CC1A98CBAF00815746 /* classListTableViewController.swift */,
 				F9567E1473641D87BB12299F /* ViewController.swift */,
+				A11719EB1A9A5AE700815746 /* testViewController.swift */,
 			);
 			name = viewController;
 			sourceTree = "<group>";
@@ -178,6 +183,7 @@
 		F9567D46EE88D0EB6BF6771C = {
 			isa = PBXGroup;
 			children = (
+				A11719ED1A9B6F1800815746 /* images */,
 				A15648741A97AAC300A1D635 /* webServer */,
 				A156486C1A979BDF00A1D635 /* webServer */,
 				F9567D42087129DBF45BC0C1 /* Products */,
@@ -270,6 +276,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A11719EE1A9B6F1800815746 /* images in Resources */,
 				A15648751A97AAC300A1D635 /* webServer in Resources */,
 				F95673579E32518813FB4C72 /* Images.xcassets in Resources */,
 				F95678E0D51A8FBD2E2AC9FC /* LaunchScreen.xib in Resources */,
@@ -377,6 +384,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A11719EC1A9A5AE700815746 /* testViewController.swift in Sources */,
 				A11719D11A98CECA00815746 /* classListTableViewCellType0.swift in Sources */,
 				F95679BEDA93C69F4C60EE79 /* AppDelegate.swift in Sources */,
 				F9567F1A8BA370FCDAA1D681 /* ViewController.swift in Sources */,
