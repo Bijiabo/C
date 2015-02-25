@@ -117,6 +117,12 @@ class classListTableViewController: UITableViewController, UIAlertViewDelegate {
       else if alertView.tag == 1
       {
         println("跳转至商城")
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("shop") as UIViewController
+        
+        //self.navigationController?.pushViewController(vc, animated: true)
+        self.presentViewController(vc, animated: true, completion: nil)
       }
       
     }

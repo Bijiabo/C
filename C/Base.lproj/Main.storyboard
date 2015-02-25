@@ -74,6 +74,67 @@
             </objects>
             <point key="canvasLocation" x="978" y="663"/>
         </scene>
+        <!--Shop View Controller-->
+        <scene sceneID="pvb-Jf-ZwU">
+            <objects>
+                <viewController storyboardIdentifier="shop" id="8cb-Bt-aAc" customClass="shopViewController" customModule="C" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Tcn-Sq-hE8"/>
+                        <viewControllerLayoutGuide type="bottom" id="xbo-4t-3B4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ai6-BI-yri">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商城" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dx2-wH-qHX">
+                                <rect key="frame" x="16" y="28" width="48" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zkF-2y-tUT">
+                                <rect key="frame" x="532" y="28" width="52" height="25.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="close">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeShop:" destination="8cb-Bt-aAc" eventType="touchUpInside" id="RHV-jc-KpY"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fFT-CQ-FQb">
+                                <rect key="frame" x="0.0" y="65" width="600" height="580"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="8cb-Bt-aAc" id="8Ld-mk-knf"/>
+                                    <outlet property="delegate" destination="8cb-Bt-aAc" id="ge9-tl-VLR"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="fFT-CQ-FQb" secondAttribute="bottom" id="Lcc-pL-PX8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fFT-CQ-FQb" secondAttribute="trailing" constant="-16" id="MKN-uV-KTW"/>
+                            <constraint firstItem="zkF-2y-tUT" firstAttribute="top" secondItem="Tcn-Sq-hE8" secondAttribute="bottom" constant="8" id="PZ2-tK-EW4"/>
+                            <constraint firstItem="fFT-CQ-FQb" firstAttribute="top" secondItem="dx2-wH-qHX" secondAttribute="bottom" constant="8" id="UlL-gH-bkc"/>
+                            <constraint firstItem="zkF-2y-tUT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dx2-wH-qHX" secondAttribute="trailing" constant="100" id="V2L-TG-rGo"/>
+                            <constraint firstItem="dx2-wH-qHX" firstAttribute="leading" secondItem="Ai6-BI-yri" secondAttribute="leadingMargin" id="ZTE-nv-3T9"/>
+                            <constraint firstItem="fFT-CQ-FQb" firstAttribute="leading" secondItem="Ai6-BI-yri" secondAttribute="leadingMargin" constant="-16" id="aiX-PJ-d1H"/>
+                            <constraint firstItem="fFT-CQ-FQb" firstAttribute="top" secondItem="Tcn-Sq-hE8" secondAttribute="bottom" id="fvl-J7-YKb"/>
+                            <constraint firstItem="dx2-wH-qHX" firstAttribute="top" secondItem="Tcn-Sq-hE8" secondAttribute="bottom" constant="8" id="r8K-d7-f7H"/>
+                            <constraint firstItem="zkF-2y-tUT" firstAttribute="trailing" secondItem="Ai6-BI-yri" secondAttribute="trailingMargin" id="xJs-p2-0mA"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="fvl-J7-YKb"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JXr-Kg-zV1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1664" y="663"/>
+        </scene>
         <!--Class Intro View Controller-->
         <scene sceneID="svv-GJ-YeD">
             <objects>

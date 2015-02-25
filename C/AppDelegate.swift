@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
-    //let webServers = webServer(port: 8080)
+    let webServers = webServer(port: 8080)
     
     //registering for sending user various kinds of notifications
     application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound|UIUserNotificationType.Alert|UIUserNotificationType.Badge, categories: nil))
