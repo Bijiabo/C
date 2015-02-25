@@ -88,14 +88,15 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mg9-00-Ma0" id="Jpo-bj-qxb">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="textview" translatesAutoresizingMaskIntoConstraints="NO" id="kVz-4d-UmB">
-                                            <rect key="frame" x="8" y="8" width="484" height="28.5"/>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" text="t" translatesAutoresizingMaskIntoConstraints="NO" id="kVz-4d-UmB">
+                                            <rect key="frame" x="8" y="8" width="10" height="28.5"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="10" id="ltJ-eB-u7u"/>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="10" id="rop-99-IzZ"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="no"/>
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="rop-99-IzZ"/>
@@ -107,7 +108,7 @@
                                         <constraint firstItem="kVz-4d-UmB" firstAttribute="top" secondItem="Jpo-bj-qxb" secondAttribute="topMargin" id="8sE-wk-VIW"/>
                                         <constraint firstItem="kVz-4d-UmB" firstAttribute="top" secondItem="Jpo-bj-qxb" secondAttribute="topMargin" id="NNO-vc-Aeg"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="kVz-4d-UmB" secondAttribute="trailing" constant="100" id="Nx8-Li-bp1"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="kVz-4d-UmB" secondAttribute="trailing" constant="100" id="ZWb-Ku-NvD"/>
+                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="kVz-4d-UmB" secondAttribute="trailing" constant="100" id="ZWb-Ku-NvD"/>
                                         <constraint firstItem="kVz-4d-UmB" firstAttribute="leading" secondItem="Jpo-bj-qxb" secondAttribute="leadingMargin" id="eRZ-G2-Yge"/>
                                         <constraint firstItem="kVz-4d-UmB" firstAttribute="leading" secondItem="Jpo-bj-qxb" secondAttribute="leadingMargin" id="kHb-50-4Z8"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="kVz-4d-UmB" secondAttribute="bottom" id="oUM-sR-ksD"/>
@@ -126,16 +127,18 @@
                                     <outlet property="textView" destination="kVz-4d-UmB" id="Wcw-kK-5CM"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dialogueItem_right" id="qnm-u0-D1m" customClass="dialogueItemTableViewCell_right" customModule="C" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dialogueItem_right" rowHeight="49" id="qnm-u0-D1m" customClass="dialogueItemTableViewCell_right" customModule="C" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qnm-u0-D1m" id="Uug-BP-OVY">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IIX-ih-pZD">
-                                            <rect key="frame" x="108" y="8" width="484" height="96.5"/>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="L" translatesAutoresizingMaskIntoConstraints="NO" id="IIX-ih-pZD">
+                                            <rect key="frame" x="569" y="8" width="23" height="32.5"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="10" id="TWE-UE-eYU"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
@@ -143,7 +146,7 @@
                                     <constraints>
                                         <constraint firstItem="IIX-ih-pZD" firstAttribute="top" secondItem="Uug-BP-OVY" secondAttribute="topMargin" id="Oxv-7D-AcP"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="IIX-ih-pZD" secondAttribute="bottom" id="Uac-gf-bLy"/>
-                                        <constraint firstItem="IIX-ih-pZD" firstAttribute="leading" secondItem="Uug-BP-OVY" secondAttribute="leadingMargin" constant="100" id="gKk-68-7vk"/>
+                                        <constraint firstItem="IIX-ih-pZD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Uug-BP-OVY" secondAttribute="leadingMargin" constant="100" id="gKk-68-7vk"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="IIX-ih-pZD" secondAttribute="trailing" id="uK5-Zd-5LJ"/>
                                     </constraints>
                                 </tableViewCellContentView>

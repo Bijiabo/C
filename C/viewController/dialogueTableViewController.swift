@@ -18,9 +18,12 @@ class dialogueTableViewController: UITableViewController {
 
 	  dialogueData = jsonData(fileName:"fixedData/199_normal",withExtension:"json").getJSON()
     
-    tableView.estimatedRowHeight = 44.0
+    tableView.estimatedRowHeight = UIFont.preferredFontForTextStyle(UIFontTextStyleBody).lineHeight
+    //44.0
+    
     tableView.rowHeight = UITableViewAutomaticDimension
-
+    
+    tableView.separatorStyle = UITableViewCellSeparatorStyle.None
   }
   
   override func didReceiveMemoryWarning() {
@@ -50,7 +53,7 @@ class dialogueTableViewController: UITableViewController {
     {
       let cell = tableView.dequeueReusableCellWithIdentifier("dialogueItem_right", forIndexPath: indexPath) as dialogueItemTableViewCell_right
       
-      cell.textView.text = dialogueData[indexPath.row]["content"].stringValue
+      cell.contentText = dialogueData[indexPath.row]["content"].stringValue
       
       return cell
     }

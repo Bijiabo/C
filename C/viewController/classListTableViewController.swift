@@ -95,7 +95,8 @@ class classListTableViewController: UITableViewController {
   */
   
   func refreshList(){
-    Alamofire.request(.GET, "http://localhost:3001/app/C/classList.json").responseJSON {
+    let url : String = "http://127.0.0.1:8080/classList.json"  //"http://localhost:3001/app/C/classList.json"
+    Alamofire.request(.GET, url).responseJSON {
       
       (_, _, jsonData, _) in
       self.classListData = JSON(jsonData!)
