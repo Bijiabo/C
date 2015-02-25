@@ -10,14 +10,15 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class classListTableViewController: UITableViewController {
+class classListTableViewController: UITableViewController, UIAlertViewDelegate {
 
   var classListData : JSON = JSON([])
+  let syncDataInstance : syncData = syncData()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    title = "C.List"
+    title = "皮蛋英语"
     
     refreshList()
     
@@ -25,6 +26,13 @@ class classListTableViewController: UITableViewController {
     self.refreshControl?.addTarget(self, action: "refreshList", forControlEvents: UIControlEvents.ValueChanged)
     self.refreshControl?.attributedTitle = NSAttributedString(string: "松开刷新课程")
     self.refreshControl?.tintColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
+    
+    //test local notification
+    var localNotification:UILocalNotification = UILocalNotification()
+    localNotification.alertAction = "皮蛋英语"
+    localNotification.alertBody = "今日课程: Traveling Off-Season \n6分钟 150学分"
+    localNotification.fireDate = NSDate(timeIntervalSinceNow: 10)
+    UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
   }
   
   override func viewWillAppear(animated: Bool) {
@@ -51,48 +59,69 @@ class classListTableViewController: UITableViewController {
   
 
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("classItemType0", forIndexPath: indexPath) as UITableViewCell
+    let cell : classListTableViewCellType0 = tableView.dequeueReusableCellWithIdentifier("classItemType0", forIndexPath: indexPath) as classListTableViewCellType0
   
-    cell.textLabel?.text = classListData[indexPath.row]["title"].stringValue
+    //cell.textLabel?.text = classListData[indexPath.row]["title"].stringValue
+    cell.classIndex = classListData[indexPath.row]["id"].stringValue
+    cell.title = classListData[indexPath.row]["title"].stringValue
+    cell.progress = classListData[indexPath.row]["progress"].doubleValue
   
+    if indexPath.row == 0
+    {
+      cell.isNewClass = true
+    }
+    else
+    {
+      cell.isNewClass = false
+    }
+    
+    if indexPath.row == 1
+    {
+      cell.isLock = true
+    }
+    else
+    {
+      cell.isLock = false
+    }
+    
     return cell
   }
 
-  
-  /*
-  // Override to support conditional editing of the table view.
-  override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-  // Return NO if you do not want the specified item to be editable.
-  return true
+  override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    return 250.0
   }
-  */
   
-  /*
-  // Override to support editing the table view.
-  override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-  if editingStyle == .Delete {
-  // Delete the row from the data source
-  tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-  } else if editingStyle == .Insert {
-  // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+  override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+    let cell : classListTableViewCellType0 = sender as classListTableViewCellType0
+    if cell.isLock
+    {
+      let alert : UIAlertView = UIAlertView(title: "课程锁定", message: "昨天没有及时学习，是否解锁？\n 消耗学分：200", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "解锁")
+      alert.tag = 0
+      alert.show()
+      return false
+    }
+    return true
   }
-  }
-  */
   
-  /*
-  // Override to support rearranging the table view.
-  override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-  
+  func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+    if buttonIndex == 1
+    {
+      if alertView.tag == 0
+      {
+        println("积分消费解锁")
+        
+        let alert : UIAlertView = UIAlertView(title: "积分不足", message: "是否切换至商城兑换学分？", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "是")
+        alert.tag = 1
+        alert.show()
+      }
+      else if alertView.tag == 1
+      {
+        println("跳转至商城")
+      }
+      
+    }
   }
-  */
-  
-  /*
-  // Override to support conditional rearranging of the table view.
-  override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-  // Return NO if you do not want the item to be re-orderable.
-  return true
-  }
-  */
+
   
   func refreshList(){
     let url : String = "http://127.0.0.1:8080/classList.json"  //"http://localhost:3001/app/C/classList.json"
@@ -104,6 +133,25 @@ class classListTableViewController: UITableViewController {
       self.tableView.reloadData()
       
       self.refreshControl?.endRefreshing()
+      
+      //sqlite3 data
+      self.syncDataInstance.prepareSQLite3()
+      let classesTable = self.syncDataInstance.db["classes"]
+      var classesCount : Int = classesTable.count
+      if classesCount == 0
+      {
+        //insert class datas
+        for(index : String , subJson : JSON) in self.classListData
+        {
+          let classId : Int = subJson["id"].intValue
+          let classTitle : String = subJson["title"].stringValue
+          
+          self.syncDataInstance.insertClassList(id: classId, title: classTitle)
+          
+        }
+      }
+      
+      self.classListData = self.syncDataInstance.getClassListData()
     }
   }
 }
