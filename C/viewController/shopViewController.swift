@@ -19,6 +19,10 @@ class shopViewController: UIViewController , UITableViewDelegate, UITableViewDat
     
     self.title = "shop"
     
+    tableView.estimatedRowHeight = UIFont.preferredFontForTextStyle(UIFontTextStyleBody).lineHeight
+    tableView.rowHeight = UITableViewAutomaticDimension
+    
+    
     shopInstance = shop(shopVC: self)
     
     refreshControl = UIRefreshControl()
@@ -40,7 +44,15 @@ class shopViewController: UIViewController , UITableViewDelegate, UITableViewDat
   
   func didGetProductsList() -> Void{
     refreshControl.endRefreshing()
-    tableView.reloadData()
+    if shopInstance.products.count>0
+    {
+      var indexPaths : [AnyObject] = []
+      for i in 0...(shopInstance.products.count - 1)
+      {
+        indexPaths.append(NSIndexPath(forRow: i, inSection: 0))
+      }
+      tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Right)
+    }
   }
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {

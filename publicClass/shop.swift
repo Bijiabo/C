@@ -57,6 +57,7 @@ class shop: NSObject , SKProductsRequestDelegate , SKPaymentTransactionObserver{
       let price = productItem.price
       let priceLocale = productItem.priceLocale
       let priceString = priceAsString(price: price, priceLocale: priceLocale)
+      println(productItem.localizedDescription)
       
       self.products.append([
         "title" : title,

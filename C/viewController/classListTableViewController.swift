@@ -95,7 +95,7 @@ class classListTableViewController: UITableViewController, UIAlertViewDelegate {
     let cell : classListTableViewCellType0 = sender as classListTableViewCellType0
     if cell.isLock
     {
-      let alert : UIAlertView = UIAlertView(title: "课程锁定", message: "昨天没有及时学习，是否解锁？\n 消耗学分：200", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "解锁")
+      let alert : UIAlertView = UIAlertView(title: "课程锁定", message: "昨天没有及时学习，是否解锁？\n 消耗：200学分 / 💎x1", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "解锁")
       alert.tag = 0
       alert.show()
       return false
@@ -110,7 +110,7 @@ class classListTableViewController: UITableViewController, UIAlertViewDelegate {
       {
         println("积分消费解锁")
         
-        let alert : UIAlertView = UIAlertView(title: "积分不足", message: "是否切换至商城兑换学分？", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "是")
+        let alert : UIAlertView = UIAlertView(title: "积分 /💎不足", message: "是否切换至商城购买？", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "是")
         alert.tag = 1
         alert.show()
       }
