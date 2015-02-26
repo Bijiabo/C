@@ -87,13 +87,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商城" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dx2-wH-qHX">
-                                <rect key="frame" x="16" y="28" width="48" height="29"/>
+                                <rect key="frame" x="8" y="28" width="48" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zkF-2y-tUT">
-                                <rect key="frame" x="532" y="28" width="52" height="25.5"/>
+                                <rect key="frame" x="543" y="28" width="41" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="close">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -103,8 +103,58 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fFT-CQ-FQb">
-                                <rect key="frame" x="0.0" y="65" width="600" height="580"/>
+                                <rect key="frame" x="0.0" y="65" width="600" height="535"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="goodsItem" id="P7p-OX-YJB" customClass="goodsItemTableViewCell" customModule="C" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P7p-OX-YJB" id="4EO-OC-Zvo">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商品名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lbd-7H-Ve2">
+                                                    <rect key="frame" x="17" y="11" width="121" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="购买" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIc-KF-Ugh">
+                                                    <rect key="frame" x="541" y="11" width="34" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="价格" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DE7-We-TBY">
+                                                    <rect key="frame" x="155" y="11" width="34" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Lbd-7H-Ve2" firstAttribute="leading" secondItem="4EO-OC-Zvo" secondAttribute="leadingMargin" id="2j8-0c-gt4"/>
+                                                <constraint firstAttribute="centerX" secondItem="DE7-We-TBY" secondAttribute="centerX" id="3qB-th-0YQ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="eIc-KF-Ugh" secondAttribute="trailing" id="BoJ-7O-rzt"/>
+                                                <constraint firstAttribute="centerY" secondItem="DE7-We-TBY" secondAttribute="centerY" id="NQj-Bg-e82"/>
+                                                <constraint firstAttribute="centerY" secondItem="eIc-KF-Ugh" secondAttribute="centerY" id="QsN-6s-fEL"/>
+                                                <constraint firstAttribute="centerY" secondItem="Lbd-7H-Ve2" secondAttribute="centerY" id="TEX-ke-0Dh"/>
+                                                <constraint firstItem="eIc-KF-Ugh" firstAttribute="top" secondItem="4EO-OC-Zvo" secondAttribute="topMargin" constant="3" id="aQk-TH-q5V"/>
+                                                <constraint firstItem="Lbd-7H-Ve2" firstAttribute="top" secondItem="4EO-OC-Zvo" secondAttribute="topMargin" constant="3" id="yeP-Bi-Wma"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="yeP-Bi-Wma"/>
+                                                    <exclude reference="aQk-TH-q5V"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="goodBuyButton" destination="eIc-KF-Ugh" id="kEL-Rk-40S"/>
+                                            <outlet property="goodPrice" destination="DE7-We-TBY" id="htW-RC-7Ak"/>
+                                            <outlet property="goodTitle" destination="Lbd-7H-Ve2" id="Fkw-v1-sYb"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="8cb-Bt-aAc" id="8Ld-mk-knf"/>
                                     <outlet property="delegate" destination="8cb-Bt-aAc" id="ge9-tl-VLR"/>
@@ -118,7 +168,7 @@
                             <constraint firstItem="zkF-2y-tUT" firstAttribute="top" secondItem="Tcn-Sq-hE8" secondAttribute="bottom" constant="8" id="PZ2-tK-EW4"/>
                             <constraint firstItem="fFT-CQ-FQb" firstAttribute="top" secondItem="dx2-wH-qHX" secondAttribute="bottom" constant="8" id="UlL-gH-bkc"/>
                             <constraint firstItem="zkF-2y-tUT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dx2-wH-qHX" secondAttribute="trailing" constant="100" id="V2L-TG-rGo"/>
-                            <constraint firstItem="dx2-wH-qHX" firstAttribute="leading" secondItem="Ai6-BI-yri" secondAttribute="leadingMargin" id="ZTE-nv-3T9"/>
+                            <constraint firstItem="dx2-wH-qHX" firstAttribute="leading" secondItem="Ai6-BI-yri" secondAttribute="leadingMargin" constant="-8" id="ZTE-nv-3T9"/>
                             <constraint firstItem="fFT-CQ-FQb" firstAttribute="leading" secondItem="Ai6-BI-yri" secondAttribute="leadingMargin" constant="-16" id="aiX-PJ-d1H"/>
                             <constraint firstItem="fFT-CQ-FQb" firstAttribute="top" secondItem="Tcn-Sq-hE8" secondAttribute="bottom" id="fvl-J7-YKb"/>
                             <constraint firstItem="dx2-wH-qHX" firstAttribute="top" secondItem="Tcn-Sq-hE8" secondAttribute="bottom" constant="8" id="r8K-d7-f7H"/>
@@ -130,6 +180,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="fFT-CQ-FQb" id="zdQ-2b-FJ8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JXr-Kg-zV1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

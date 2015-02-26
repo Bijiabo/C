@@ -9,12 +9,38 @@
 import UIKit
 
 class shopViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
+
+  var shopInstance : shop!
+  var refreshControl : UIRefreshControl!
+  @IBOutlet var tableView: UITableView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     self.title = "shop"
     
+    shopInstance = shop(shopVC: self)
+    
+    refreshControl = UIRefreshControl()
+    refreshControl.addTarget(self, action: "handleRefresh", forControlEvents: UIControlEvents.ValueChanged)
+    tableView.addSubview(refreshControl)
+    
+    refreshControl.beginRefreshing()
+  }
+  
+  func handleRefresh() -> Void {
+    
+  }
+  
+  override func viewDidDisappear(animated: Bool) {
+    super.viewDidDisappear(animated)
+    
+    shopInstance.removeTransactionObserver()
+  }
+  
+  func didGetProductsList() -> Void{
+    refreshControl.endRefreshing()
+    tableView.reloadData()
   }
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -22,11 +48,15 @@ class shopViewController: UIViewController , UITableViewDelegate, UITableViewDat
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 0
+    return shopInstance.products.count
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("goodsItem", forIndexPath: indexPath) as UITableViewCell
+    let cell : goodsItemTableViewCell = tableView.dequeueReusableCellWithIdentifier("goodsItem", forIndexPath: indexPath) as goodsItemTableViewCell
+    
+    cell.goodTitle.text = shopInstance.products[indexPath.row]["title"] as String!
+    cell.goodPrice.text = shopInstance.products[indexPath.row]["priceString"] as String!
+    cell.goodBuyButton.text = "购买"
     
     return cell
   }

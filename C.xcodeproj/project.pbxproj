@@ -36,6 +36,11 @@
 		A1B7FE6D1A9E1E7F005A72B4 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1B7FE6C1A9E1E7F005A72B4 /* MainInterface.storyboard */; };
 		A1B7FE6F1A9E410A005A72B4 /* shopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B7FE6E1A9E410A005A72B4 /* shopViewController.swift */; };
 		A1B7FE701A9E410A005A72B4 /* shopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B7FE6E1A9E410A005A72B4 /* shopViewController.swift */; };
+		A1B7FE771A9E5AFD005A72B4 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1B7FE761A9E5AFD005A72B4 /* StoreKit.framework */; };
+		A1B7FE791A9E5CB0005A72B4 /* shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B7FE781A9E5CB0005A72B4 /* shop.swift */; };
+		A1B7FE7A1A9E5CB0005A72B4 /* shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B7FE781A9E5CB0005A72B4 /* shop.swift */; };
+		A1B7FE7C1A9F2450005A72B4 /* goodsItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B7FE7B1A9F2450005A72B4 /* goodsItemTableViewCell.swift */; };
+		A1B7FE7D1A9F2450005A72B4 /* goodsItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B7FE7B1A9F2450005A72B4 /* goodsItemTableViewCell.swift */; };
 		F95672DDF512E22D9264D437 /* jsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F956750497036AD12FB7BE94 /* jsonData.swift */; };
 		F95673579E32518813FB4C72 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F956702AA32C0419734623EA /* Images.xcassets */; };
 		F9567460F75ACFE229A7F315 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9567274EE4AB05D508DFE84 /* Main.storyboard */; };
@@ -139,6 +144,10 @@
 		A1B7FE6A1A9E1E73005A72B4 /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		A1B7FE6C1A9E1E7F005A72B4 /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		A1B7FE6E1A9E410A005A72B4 /* shopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = shopViewController.swift; path = viewController/shopViewController.swift; sourceTree = "<group>"; };
+		A1B7FE731A9E4996005A72B4 /* 皮蛋英语.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "皮蛋英语.entitlements"; sourceTree = "<group>"; };
+		A1B7FE761A9E5AFD005A72B4 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		A1B7FE781A9E5CB0005A72B4 /* shop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shop.swift; sourceTree = "<group>"; };
+		A1B7FE7B1A9F2450005A72B4 /* goodsItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = goodsItemTableViewCell.swift; path = cell/goodsItemTableViewCell.swift; sourceTree = "<group>"; };
 		A1D788851A9E17DD00CC7BF8 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		BDCD70D6E66136274E3C7ED4 /* Pods-CTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CTests/Pods-CTests.release.xcconfig"; sourceTree = "<group>"; };
 		F0FDD4005233E1484B07FDC9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -179,6 +188,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1B7FE771A9E5AFD005A72B4 /* StoreKit.framework in Frameworks */,
 				A16896F11A9DFE6D0046F806 /* SQLite.framework in Frameworks */,
 				8BECA46167AEC165AF1961E8 /* Pods.framework in Frameworks */,
 			);
@@ -190,6 +200,7 @@
 		3E9C72B5AF98A66A1DD52F13 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A1B7FE761A9E5AFD005A72B4 /* StoreKit.framework */,
 				8E900FCAFC3CEDC0F27184AB /* libPods-C.a */,
 				86454F21C34A83DFA7F9EBF9 /* libPods-CTests.a */,
 				9321DAD084FF7E80C80E53E9 /* Pods.framework */,
@@ -229,6 +240,7 @@
 				A16896CA1A9CEF1C0046F806 /* dialogueItemTableViewCell_left.swift */,
 				A16896CD1A9CF6E40046F806 /* dialogueItemTableViewCell_right.swift */,
 				A16896D01A9DAB0F0046F806 /* dialogueItemTableViewCell.swift */,
+				A1B7FE7B1A9F2450005A72B4 /* goodsItemTableViewCell.swift */,
 			);
 			name = cell;
 			sourceTree = "<group>";
@@ -255,6 +267,7 @@
 		A1B7FE5D1A9E1E3C005A72B4 /* 皮蛋英语 */ = {
 			isa = PBXGroup;
 			children = (
+				A1B7FE731A9E4996005A72B4 /* 皮蛋英语.entitlements */,
 				A1B7FE6C1A9E1E7F005A72B4 /* MainInterface.storyboard */,
 				A1B7FE6A1A9E1E73005A72B4 /* TodayViewController.swift */,
 				A1B7FE5E1A9E1E3C005A72B4 /* Supporting Files */,
@@ -298,6 +311,7 @@
 			children = (
 				F956750497036AD12FB7BE94 /* jsonData.swift */,
 				A16896F21A9DFF520046F806 /* syncData.swift */,
+				A1B7FE781A9E5CB0005A72B4 /* shop.swift */,
 			);
 			path = publicClass;
 			sourceTree = "<group>";
@@ -421,6 +435,20 @@
 				TargetAttributes = {
 					A1B7FE5A1A9E1E3C005A72B4 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = SK8W4L32D6;
+						SystemCapabilities = {
+							com.apple.OMC = {
+								enabled = 1;
+							};
+						};
+					};
+					F95671E500B20282AAED7109 = {
+						DevelopmentTeam = SK8W4L32D6;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -620,10 +648,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1B7FE791A9E5CB0005A72B4 /* shop.swift in Sources */,
 				A1B7FE6F1A9E410A005A72B4 /* shopViewController.swift in Sources */,
 				A11719EC1A9A5AE700815746 /* testViewController.swift in Sources */,
 				A16896F31A9DFF520046F806 /* syncData.swift in Sources */,
 				A11719D11A98CECA00815746 /* classListTableViewCellType0.swift in Sources */,
+				A1B7FE7C1A9F2450005A72B4 /* goodsItemTableViewCell.swift in Sources */,
 				A16896C61A9CEB720046F806 /* dialogueTableViewController.swift in Sources */,
 				F95679BEDA93C69F4C60EE79 /* AppDelegate.swift in Sources */,
 				A16896F71A9E03FF0046F806 /* classIntroViewController.swift in Sources */,
@@ -644,6 +674,8 @@
 				A11719D21A98CECA00815746 /* classListTableViewCellType0.swift in Sources */,
 				A11719CE1A98CBAF00815746 /* classListTableViewController.swift in Sources */,
 				A16896CC1A9CEF1C0046F806 /* dialogueItemTableViewCell_left.swift in Sources */,
+				A1B7FE7D1A9F2450005A72B4 /* goodsItemTableViewCell.swift in Sources */,
+				A1B7FE7A1A9E5CB0005A72B4 /* shop.swift in Sources */,
 				A1B7FE701A9E410A005A72B4 /* shopViewController.swift in Sources */,
 				F9567974FA44B9F0A44FA0E7 /* CTests.swift in Sources */,
 				A16896CF1A9CF6E40046F806 /* dialogueItemTableViewCell_right.swift in Sources */,
@@ -698,6 +730,9 @@
 		A1B7FE681A9E1E3C005A72B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "皮蛋英语/皮蛋英语.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -705,6 +740,7 @@
 				INFOPLIST_FILE = "皮蛋英语/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -712,9 +748,13 @@
 		A1B7FE691A9E1E3C005A72B4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "皮蛋英语/皮蛋英语.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "皮蛋英语/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -766,11 +806,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = C/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -826,10 +869,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = C/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
