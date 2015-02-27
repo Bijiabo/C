@@ -16,13 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   var window: UIWindow?
   
-  
-  
+  var syncDataInstance : syncData = syncData()
+  var player : CPlayer = CPlayer()
   
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
     let webServers = webServer(port: 8080)
-    
+
+
+
     //registering for sending user various kinds of notifications
     application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound|UIUserNotificationType.Alert|UIUserNotificationType.Badge, categories: nil))
     

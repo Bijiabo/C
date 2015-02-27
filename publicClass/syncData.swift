@@ -11,7 +11,7 @@ import SQLite
 import SwiftyJSON
 
 class syncData:NSObject{
-  dynamic var classIndex : Int = 0
+  dynamic var classIndex : String = ""
   dynamic var classMode : String = "slow"
   dynamic var classTitle : String = ""
   dynamic var playerObserver : AnyObject!

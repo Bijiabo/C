@@ -14,7 +14,8 @@ class classListTableViewController: UITableViewController, UIAlertViewDelegate {
 
   var classListData : JSON = JSON([])
   let syncDataInstance : syncData = syncData()
-  
+	let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -128,6 +129,13 @@ class classListTableViewController: UITableViewController, UIAlertViewDelegate {
     }
   }
 
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		let cell : classListTableViewCellType0 = sender as classListTableViewCellType0
+		appDelegate.syncDataInstance.classIndex = cell.classIndex
+		appDelegate.syncDataInstance.classTitle = cell.title
+
+	}
+
   
   func refreshList(){
     let url : String = "http://127.0.0.1:8080/classList.json"  //"http://localhost:3001/app/C/classList.json"
@@ -160,4 +168,6 @@ class classListTableViewController: UITableViewController, UIAlertViewDelegate {
       self.classListData = self.syncDataInstance.getClassListData()
     }
   }
+
+
 }

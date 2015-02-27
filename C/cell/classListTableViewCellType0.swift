@@ -18,7 +18,6 @@ class classListTableViewCellType0: UITableViewCell {
   @IBOutlet var lockIcon: UIImageView!
   @IBOutlet var blackShadow: UIImageView!
   
-  
   var isNewClass : Bool = false{
     didSet {
       if isNewClass
