@@ -55,6 +55,7 @@ class dialogueItemTableViewCell: UITableViewCell {
     textView.addGestureRecognizer(tapRecognizer)
     
     animationForTextView(textView: textView)
+    
   }
   
   func animationForTextView(#textView : UITextView) -> Void {

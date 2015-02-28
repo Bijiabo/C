@@ -20,6 +20,7 @@ class classIntroViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    classTitle.font = UIFont(name: "HelveticaNeue-UltraLight", size: 40.0)
 	  classTitle.text = appDelegate.syncDataInstance.classTitle
 
 	  let backgroundImagePath : String = "images/classBackground/\(appDelegate.syncDataInstance.classIndex).jpg"
@@ -30,6 +31,7 @@ class classIntroViewController: UIViewController {
     startButton.layer.borderColor = UIColor.whiteColor().CGColor
     startButton.layer.borderWidth = 1.0
     startButton.layer.cornerRadius = 5.0
+    
   }
   
   override func didReceiveMemoryWarning() {
