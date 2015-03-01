@@ -19,8 +19,9 @@ class dialogueViewController: UIViewController , UITableViewDelegate, UITableVie
   @IBOutlet var classTitleLabel: UILabel!
   @IBOutlet var backgroundImageView: UIImageView!
   
-  var dialogueData : JSON = JSON([])
   var progressBar : UIImageView!
+  var dialogueData : Array<AnyObject> = Array<AnyObject>()
+  var dialogueAttributedData : Array<AnyObject> = Array<AnyObject>()
 
 	let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
 
@@ -28,7 +29,7 @@ class dialogueViewController: UIViewController , UITableViewDelegate, UITableVie
     super.viewDidLoad()
     
     //dialogueData = jsonData(fileName:"fixedData/199_normal",withExtension:"json").getJSON()
-
+    
     //设定标题
     classTitleLabel.text = " "+appDelegate.syncDataInstance.classTitle+" "
     classTitleLabel.layer.backgroundColor = UIColor.whiteColor().CGColor
@@ -53,7 +54,7 @@ class dialogueViewController: UIViewController , UITableViewDelegate, UITableVie
     tableView.estimatedRowHeight = UIFont.preferredFontForTextStyle(UIFontTextStyleBody).lineHeight
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-    tableView.tableHeaderView = UIView(frame: CGRectMake(0, 0, self.view.frame.size.width, headerBarHeight))
+    //tableView.tableHeaderView = UIView(frame: CGRectMake(0, 0, self.view.frame.size.width, headerBarHeight))
     self.view.sendSubviewToBack(tableView)
     var tableViewFrame : CGRect = CGRectMake(0.0, self.view.frame.height+50.0, self.view.frame.width, self.view.frame.height-50.0)
     tableView.frame = tableViewFrame
@@ -84,6 +85,12 @@ class dialogueViewController: UIViewController , UITableViewDelegate, UITableVie
     self.view.addSubview(progressBar)
   }
   
+  override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(animated)
+    
+    setDataResource(classIndex : appDelegate.syncDataInstance.classIndex, classMode : appDelegate.syncDataInstance.classMode)
+  }
+  
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
@@ -97,7 +104,7 @@ class dialogueViewController: UIViewController , UITableViewDelegate, UITableVie
     
     var cell : dialogueItemTableViewCell!
     
-    if dialogueData[indexPath.row]["send"].boolValue == false
+    if dialogueData[indexPath.row]["send"] as Bool == false
     {
       cell = tableView.dequeueReusableCellWithIdentifier("dialogueItem_left", forIndexPath: indexPath) as dialogueItemTableViewCell
     }
@@ -106,7 +113,8 @@ class dialogueViewController: UIViewController , UITableViewDelegate, UITableVie
       cell = tableView.dequeueReusableCellWithIdentifier("dialogueItem_right", forIndexPath: indexPath) as dialogueItemTableViewCell
     }
     
-    cell.textView.attributedText = getDialogueContent(data:dialogueData[indexPath.row],textColor : (dialogueData[indexPath.row]["send"].boolValue ? UIColor.whiteColor() : UIColor.blackColor()))
+    cell.textView.attributedText = dialogueData[indexPath.row]["attributedString"] as NSAttributedString
+      //getDialogueContent(data:dialogueData[indexPath.row],textColor : (dialogueData[indexPath.row]["send"].boolValue ? UIColor.whiteColor() : UIColor.blackColor()))
     
     cell.backgroundColor = UIColor.clearColor()
     
@@ -120,7 +128,17 @@ class dialogueViewController: UIViewController , UITableViewDelegate, UITableVie
     //get dialogue data
     let jsonFileName : String = "\(fileName).json"
     let jsonFilePath : String = syncData().dataPath(jsonFileName)
-    dialogueData = jsonData(filePath: jsonFilePath).getJSON()
+    let data = jsonData(filePath: jsonFilePath).getJSON()
+    //处理数据
+    var dataArray :Array<AnyObject>= Array<AnyObject>()
+    for (index:String,dataItem:JSON) in data
+    {
+      dataArray.append([
+        "send" : dataItem["send"].boolValue,
+        "attributedString" : getDialogueContent(data:dataItem,textColor : (dataItem["send"].boolValue ? UIColor.whiteColor() : UIColor.blackColor()))
+        ])
+    }
+    dialogueAttributedData = dataArray
     
     //set player
     let mediaFileName : String = "\(fileName).m4a"
@@ -146,7 +164,6 @@ class dialogueViewController: UIViewController , UITableViewDelegate, UITableVie
       progressAnimation.delegate = self
       progressAnimation.duration = 1.5
       self.progressBar.pop_addAnimation(progressAnimation, forKey: "progressAni")
-      //self.progressBar.frame = frame
     })
     
     //appDelegate.player.player.play()
@@ -217,12 +234,12 @@ class dialogueViewController: UIViewController , UITableViewDelegate, UITableVie
     titleAni.toValue = NSValue(CGRect:titleFrame)
     titleAni.name = "titleAni"
     titleAni.delegate = self
-    titleAni.duration = 0.5
+    titleAni.duration = 0.1
     self.classTitleLabel.pop_addAnimation(titleAni, forKey: "titleAni")
     
     //tableview 动画
-    self.tableView.hidden = false
-    self.view.bringSubviewToFront(tableView)
+    //self.tableView.hidden = false
+    
     let tableViewAni : POPBasicAnimation = POPBasicAnimation()
     tableViewAni.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
     tableViewAni.property = POPAnimatableProperty.propertyWithName(kPOPViewFrame) as POPAnimatableProperty
@@ -230,27 +247,62 @@ class dialogueViewController: UIViewController , UITableViewDelegate, UITableVie
     tableViewAni.toValue = NSValue(CGRect:tableViewFrame)
     tableViewAni.name = "tableViewAni"
     tableViewAni.delegate = self
-    tableViewAni.duration = 0.5
+    tableViewAni.duration = 0.1
     //tableView.pop_addAnimation(tableViewAni, forKey: "tableViewAni")
     
+    //模糊动画
+    tableView.hidden = false
+    var tableViewBackgroundFrame = tableView.frame
+    
+    tableViewBackgroundFrame.origin.y = self.view.frame.size.height
+    let tableViewBackground : UIView = UIView(frame: tableViewBackgroundFrame)
+    var visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .ExtraLight)) as UIVisualEffectView
+    visualEffectView.frame = tableViewBackground.bounds
+    tableViewBackground.addSubview(visualEffectView)
+    
+    tableViewBackground.layer.shadowColor = UIColor.blackColor().CGColor
+    tableViewBackground.layer.shadowOffset = CGSizeMake(0.0, -1.0)
+    tableViewBackground.layer.shadowRadius = 3.0
+    tableViewBackground.layer.shadowOpacity = 0.1
+    self.view.addSubview(tableViewBackground)
+    self.view.bringSubviewToFront(tableView)
+    
+    let tableViewBackgroundAni : POPBasicAnimation = POPBasicAnimation()
+    tableViewBackgroundAni.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+    tableViewBackgroundAni.property = POPAnimatableProperty.propertyWithName(kPOPViewFrame) as POPAnimatableProperty
+    tableViewBackgroundAni.toValue = NSValue(CGRect:tableView.frame)
+    tableViewBackgroundAni.name = "tableViewBackgroundAni"
+    tableViewBackgroundAni.delegate = self
+    tableViewBackgroundAni.duration = 0.5
+    tableViewBackground.pop_addAnimation(tableViewBackgroundAni, forKey: "tableViewBackgroundAni")
     
   }
   
-  func pop_animationDidStart(#anim : POPAnimation)->Void{
+  func pop_animationDidStart(animator : POPAnimation)->Void{
     println("cccc")
   }
   
-  func pop_animationDidReachToValue(#anim : POPAnimation)->Void{
+  func pop_animationDidReachToValue(animator : POPAnimation)->Void{
     println("vvvv")
   }
   
-  func pop_animationDidStop (#anim : POPAnimation, _ finished : Bool) -> Void {
+  func pop_animationDidStop (animator : POPAnimation, finished : Bool) -> Void {
     println("aaaa")
+    
+    let titleFrame = classTitleLabel.frame
+    
+    if animator.name == "tableViewBackgroundAni"
+    {
+      self.dialogueData = self.dialogueAttributedData
+      tableView.reloadData()
+    }
+    
+
+    
   }
   
   func animatorDidAnimate(animator:POPAnimator)->Void{
     println("pop finished")
-    //setDataResource(classIndex : appDelegate.syncDataInstance.classIndex, classMode : appDelegate.syncDataInstance.classMode)
   }
   
   func animatorWillAnimate(animator:POPAnimator)->Void{
