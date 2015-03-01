@@ -18,6 +18,10 @@ class dialogueViewController: UIViewController , UITableViewDelegate, UITableVie
 	@IBOutlet var tableView: UITableView!
   @IBOutlet var classTitleLabel: UILabel!
   @IBOutlet var backgroundImageView: UIImageView!
+  @IBOutlet var closeButton: UIButton!
+  @IBOutlet var classTitleLabelWhenLearn: UILabel!
+  @IBOutlet var playButton: UIButton!
+  @IBOutlet var stopButton: UIButton!
   
   var progressBar : UIImageView!
   var dialogueData : Array<AnyObject> = Array<AnyObject>()
@@ -33,7 +37,8 @@ class dialogueViewController: UIViewController , UITableViewDelegate, UITableVie
     //设定标题
     classTitleLabel.text = " "+appDelegate.syncDataInstance.classTitle+" "
     classTitleLabel.layer.backgroundColor = UIColor.whiteColor().CGColor
-    classTitleLabel.layer.opacity = 0.5
+    classTitleLabel.layer.opacity = 0.6
+    classTitleLabelWhenLearn.text = appDelegate.syncDataInstance.classTitle
     
 	  //set views
     let headerBarHeight : CGFloat = 50.0
@@ -54,11 +59,13 @@ class dialogueViewController: UIViewController , UITableViewDelegate, UITableVie
     tableView.estimatedRowHeight = UIFont.preferredFontForTextStyle(UIFontTextStyleBody).lineHeight
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-    //tableView.tableHeaderView = UIView(frame: CGRectMake(0, 0, self.view.frame.size.width, headerBarHeight))
+    //tableView.tableHeaderView = UIView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-1.0))
     self.view.sendSubviewToBack(tableView)
-    var tableViewFrame : CGRect = CGRectMake(0.0, self.view.frame.height+50.0, self.view.frame.width, self.view.frame.height-50.0)
-    tableView.frame = tableViewFrame
-    tableView.hidden = true
+    tableView.tableHeaderView?.backgroundColor = UIColor.whiteColor()
+    
+    //var tableViewFrame : CGRect = CGRectMake(0.0, self.view.frame.height+50.0, self.view.frame.width, self.view.frame.height-50.0)
+    //tableView.frame = tableViewFrame
+    //tableView.hidden = true
     
     //tableview背景透明
     tableView.backgroundColor = UIColor.clearColor()
@@ -68,7 +75,7 @@ class dialogueViewController: UIViewController , UITableViewDelegate, UITableVie
     //设定背景图片
     let backgroundImagePath : String = "images/classBackground/\(appDelegate.syncDataInstance.classIndex).jpg"
     let backgroundImageTempPath : String = "images/classBackground/882.jpg"
-    backgroundImageView.image = UIImage(named: backgroundImageTempPath)
+    backgroundImageView.image = UIImage(named: backgroundImagePath)
     //self.view.sendSubviewToBack(backgroundImageView)
     
     //添加进度条
@@ -89,6 +96,10 @@ class dialogueViewController: UIViewController , UITableViewDelegate, UITableVie
     super.viewDidAppear(animated)
     
     setDataResource(classIndex : appDelegate.syncDataInstance.classIndex, classMode : appDelegate.syncDataInstance.classMode)
+    
+    self.dialogueData = self.dialogueAttributedData
+    tableView.reloadData()
+    
   }
   
   
@@ -235,70 +246,55 @@ class dialogueViewController: UIViewController , UITableViewDelegate, UITableVie
     titleAni.name = "titleAni"
     titleAni.delegate = self
     titleAni.duration = 0.1
-    self.classTitleLabel.pop_addAnimation(titleAni, forKey: "titleAni")
-    
-    //tableview 动画
-    //self.tableView.hidden = false
-    
-    let tableViewAni : POPBasicAnimation = POPBasicAnimation()
-    tableViewAni.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-    tableViewAni.property = POPAnimatableProperty.propertyWithName(kPOPViewFrame) as POPAnimatableProperty
-    var tableViewFrame : CGRect = CGRectMake(0.0, 50.0, self.view.frame.width, self.view.frame.height-50.0)
-    tableViewAni.toValue = NSValue(CGRect:tableViewFrame)
-    tableViewAni.name = "tableViewAni"
-    tableViewAni.delegate = self
-    tableViewAni.duration = 0.1
-    //tableView.pop_addAnimation(tableViewAni, forKey: "tableViewAni")
+    //self.classTitleLabel.pop_addAnimation(titleAni, forKey: "titleAni")
     
     //模糊动画
-    tableView.hidden = false
-    var tableViewBackgroundFrame = tableView.frame
-    
-    tableViewBackgroundFrame.origin.y = self.view.frame.size.height
+
+    var tableViewBackgroundFrame = self.view.frame
     let tableViewBackground : UIView = UIView(frame: tableViewBackgroundFrame)
     var visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .ExtraLight)) as UIVisualEffectView
     visualEffectView.frame = tableViewBackground.bounds
     tableViewBackground.addSubview(visualEffectView)
-    
-    tableViewBackground.layer.shadowColor = UIColor.blackColor().CGColor
-    tableViewBackground.layer.shadowOffset = CGSizeMake(0.0, -1.0)
-    tableViewBackground.layer.shadowRadius = 3.0
-    tableViewBackground.layer.shadowOpacity = 0.1
     self.view.addSubview(tableViewBackground)
-    self.view.bringSubviewToFront(tableView)
-    
+
     let tableViewBackgroundAni : POPBasicAnimation = POPBasicAnimation()
     tableViewBackgroundAni.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
     tableViewBackgroundAni.property = POPAnimatableProperty.propertyWithName(kPOPViewFrame) as POPAnimatableProperty
-    tableViewBackgroundAni.toValue = NSValue(CGRect:tableView.frame)
+    
+    tableViewBackgroundFrame.origin.y = self.view.frame.size.height
+    tableViewBackgroundAni.fromValue = NSValue(CGRect:tableViewBackgroundFrame)
     tableViewBackgroundAni.name = "tableViewBackgroundAni"
     tableViewBackgroundAni.delegate = self
-    tableViewBackgroundAni.duration = 0.5
+    tableViewBackgroundAni.duration = 0.2
     tableViewBackground.pop_addAnimation(tableViewBackgroundAni, forKey: "tableViewBackgroundAni")
     
   }
   
+  
+  
   func pop_animationDidStart(animator : POPAnimation)->Void{
-    println("cccc")
+    println("pop_animationDidStart")
   }
   
   func pop_animationDidReachToValue(animator : POPAnimation)->Void{
-    println("vvvv")
+    println("pop_animationDidReachToValue")
   }
   
   func pop_animationDidStop (animator : POPAnimation, finished : Bool) -> Void {
-    println("aaaa")
+    println("pop_animationDidStop")
     
     let titleFrame = classTitleLabel.frame
     
     if animator.name == "tableViewBackgroundAni"
     {
-      self.dialogueData = self.dialogueAttributedData
-      tableView.reloadData()
+      closeButton.imageView?.image = UIImage(named: "close_black")
+      self.view.bringSubviewToFront(closeButton)
+      self.view.bringSubviewToFront(classTitleLabelWhenLearn)
+      self.view.bringSubviewToFront(playButton)
+      self.view.bringSubviewToFront(stopButton)
+      //sleep(2)
+      //self.view.bringSubviewToFront(tableView)
     }
-    
-
-    
   }
   
   func animatorDidAnimate(animator:POPAnimator)->Void{

@@ -6,43 +6,47 @@
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>C5BB8B5C-276E-4CD0-9B17-A10F2049D90D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>C</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>67620B5EFA902936DF04070AF595B76AB0333747</key>
-		<string>https://github.com/Alamofire/Alamofire.git</string>
-		<key>C861FC00CEE0F6A6BE81FCFF6785FAA78C58EBB3</key>
-		<string>https://github.com/SwiftyJSON/SwiftyJSON.git</string>
+		<key>3AE8ED2E684071AF4FB151FA51BF266B82FF45BD</key>
+		<string>https://github.com/stephencelis/SQLite.swift.git</string>
+		<key>54720108AF96AFFBF375C84F8AC599CFC3E90178</key>
+		<string>https://github.com/Bijiabo/C.git</string>
 	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>C.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>67620B5EFA902936DF04070AF595B76AB0333747</key>
-		<string>Alamofire/</string>
-		<key>C861FC00CEE0F6A6BE81FCFF6785FAA78C58EBB3</key>
-		<string>SwiftyJSON/</string>
+		<key>3AE8ED2E684071AF4FB151FA51BF266B82FF45BD</key>
+		<string>..SQLite.swift/</string>
+		<key>54720108AF96AFFBF375C84F8AC599CFC3E90178</key>
+		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/Alamofire/Alamofire.git</string>
+	<string>https://github.com/Bijiabo/C.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>67620B5EFA902936DF04070AF595B76AB0333747</string>
+	<string>54720108AF96AFFBF375C84F8AC599CFC3E90178</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>67620B5EFA902936DF04070AF595B76AB0333747</string>
+			<string>54720108AF96AFFBF375C84F8AC599CFC3E90178</string>
 			<key>IDESourceControlWCCName</key>
-			<string>Alamofire</string>
+			<string>C</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>C861FC00CEE0F6A6BE81FCFF6785FAA78C58EBB3</string>
+			<string>3AE8ED2E684071AF4FB151FA51BF266B82FF45BD</string>
 			<key>IDESourceControlWCCName</key>
-			<string>SwiftyJSON</string>
+			<string>SQLite.swift</string>
 		</dict>
 	</array>
 </dict>
