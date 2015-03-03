@@ -21,11 +21,14 @@ class dialogueViewController: UIViewController , UITableViewDelegate, UITableVie
   @IBOutlet var closeButton: UIButton!
   @IBOutlet var classTitleLabelWhenLearn: UILabel!
   @IBOutlet var playButton: UIButton!
-  @IBOutlet var stopButton: UIButton!
+  @IBOutlet var progressBarBackground: UIImageView!
+  @IBOutlet var progressBarProgress: UIImageView!
+  @IBOutlet var playerTimeLabel: UILabel!
   
   var progressBar : UIImageView!
-  var dialogueData : Array<AnyObject> = Array<AnyObject>()
-  var dialogueAttributedData : Array<AnyObject> = Array<AnyObject>()
+  var dialogueData : Array<AnyObject> = Array<AnyObject>() //对话数据
+  var dialogueAttributedData : Array<AnyObject> = Array<AnyObject>() //数据缓存，用于生成nsmutableAttributedString数据过程中缓存
+  var dialogueIndexNow : Int = 0 //当前音频时间对应对话索引序号
 
 	let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
 
@@ -108,7 +111,7 @@ class dialogueViewController: UIViewController , UITableViewDelegate, UITableVie
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return dialogueData.count
+    return appDelegate.syncDataInstance.classMode == "explain" ? dialogueData.count : self.dialogueIndexNow
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -141,15 +144,22 @@ class dialogueViewController: UIViewController , UITableViewDelegate, UITableVie
     let jsonFilePath : String = syncData().dataPath(jsonFileName)
     let data = jsonData(filePath: jsonFilePath).getJSON()
     //处理数据
-    var dataArray :Array<AnyObject>= Array<AnyObject>()
+    dialogueAttributedData = Array<AnyObject>()
+    var CMTimeArray : Array<AnyObject> = [] //时间数组
     for (index:String,dataItem:JSON) in data
     {
-      dataArray.append([
+      dialogueAttributedData.append([
         "send" : dataItem["send"].boolValue,
-        "attributedString" : getDialogueContent(data:dataItem,textColor : (dataItem["send"].boolValue ? UIColor.whiteColor() : UIColor.blackColor()))
+        "attributedString" : getDialogueContent(data:dataItem,textColor : (dataItem["send"].boolValue ? UIColor.whiteColor() : UIColor.blackColor())),
+        "index" : dataItem["index"].intValue,
+        "time" : dataItem["time"].intValue
         ])
+      
+      if let time = dataItem["time"].int
+      {
+        CMTimeArray.append( NSValue(CMTime:CMTimeMake(Int64( dataItem["time"].intValue ), 1000)) )
+      }
     }
-    dialogueAttributedData = dataArray
     
     //set player
     let mediaFileName : String = "\(fileName).m4a"
@@ -164,21 +174,47 @@ class dialogueViewController: UIViewController , UITableViewDelegate, UITableVie
       let secondsNow = CMTimeGetSeconds(timeNow)
       let playerDuration = CMTimeGetSeconds(self.appDelegate.player.player.currentItem.asset.duration)
       
-      var frame = self.progressBar.frame
-      frame.size.width = CGFloat(secondsNow / playerDuration) * self.view.frame.size.width
+      var frame = self.progressBarProgress.frame
+      let originalFrame = frame
+      frame.size.width = CGFloat(secondsNow / playerDuration) * self.progressBarBackground.frame.size.width
       
       let progressAnimation : POPBasicAnimation = POPBasicAnimation()
       progressAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
       progressAnimation.property = POPAnimatableProperty.propertyWithName(kPOPViewFrame) as POPAnimatableProperty
+      //progressAnimation.fromValue = NSValue(CGRect:originalFrame)
       progressAnimation.toValue = NSValue(CGRect:frame)
       progressAnimation.name = "progressAni"
       progressAnimation.delegate = self
       progressAnimation.duration = 1.5
-      self.progressBar.pop_addAnimation(progressAnimation, forKey: "progressAni")
+      self.progressBarProgress.pop_addAnimation(progressAnimation, forKey: "progressAni")
     })
     
+    //添加时间监听队列
+    appDelegate.player.addBoundaryTimeObserverToPlayer(name: "dialogue", times: CMTimeArray, usingBlock: {() -> Void in
+      println("boundary time observer func ...")
+      let currentData : Dictionary<String,AnyObject> = self.getPlayerCurrentData(player: self.appDelegate.player.player, data: self.dialogueAttributedData)
+      self.dialogueIndexNow = (currentData["index"] as Int) + 1
+      let indexPath : NSIndexPath = NSIndexPath(forRow: currentData["index"] as Int, inSection: 0)
+      self.tableView.insertRowsAtIndexPaths([indexPath] , withRowAnimation: UITableViewRowAnimation.None)
+      self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+    })
     //appDelegate.player.player.play()
-
+  }
+  
+  func getPlayerCurrentData(#player : AVPlayer , data : Array<AnyObject>) -> Dictionary<String,AnyObject>{
+    
+    //获取音频播放当前对话数据
+    var currentData : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+    var triggerTime = Int(CMTimeGetSeconds(player.currentTime()) * 1000)
+    for dataItem  in data
+    {
+      if triggerTime >= dataItem["time"] as Int
+      {
+        currentData = dataItem as Dictionary<String,AnyObject>
+      }
+    }
+    
+    return currentData
   }
 
   func getDialogueContent(#data : JSON , textColor : UIColor) -> NSMutableAttributedString {
@@ -267,21 +303,21 @@ class dialogueViewController: UIViewController , UITableViewDelegate, UITableVie
     tableViewBackgroundAni.delegate = self
     tableViewBackgroundAni.duration = 0.2
     tableViewBackground.pop_addAnimation(tableViewBackgroundAni, forKey: "tableViewBackgroundAni")
-    
+   
+    self.view.bringSubviewToFront(tableView)
   }
   
   
   
   func pop_animationDidStart(animator : POPAnimation)->Void{
-    println("pop_animationDidStart")
+
   }
   
   func pop_animationDidReachToValue(animator : POPAnimation)->Void{
-    println("pop_animationDidReachToValue")
+
   }
   
   func pop_animationDidStop (animator : POPAnimation, finished : Bool) -> Void {
-    println("pop_animationDidStop")
     
     let titleFrame = classTitleLabel.frame
     
@@ -291,18 +327,47 @@ class dialogueViewController: UIViewController , UITableViewDelegate, UITableVie
       self.view.bringSubviewToFront(closeButton)
       self.view.bringSubviewToFront(classTitleLabelWhenLearn)
       self.view.bringSubviewToFront(playButton)
-      self.view.bringSubviewToFront(stopButton)
+      self.view.bringSubviewToFront(progressBarBackground)
+      self.view.bringSubviewToFront(progressBarProgress)
+      self.view.bringSubviewToFront(playerTimeLabel)
       //sleep(2)
       //self.view.bringSubviewToFront(tableView)
     }
   }
   
   func animatorDidAnimate(animator:POPAnimator)->Void{
-    println("pop finished")
+
   }
   
   func animatorWillAnimate(animator:POPAnimator)->Void{
-    println("xxxx")
     
   }
+  
+  @IBAction func changePlayerRunningStatus(sender: AnyObject) {
+    if appDelegate.player.player.currentItem != nil
+    {
+      let secondsNow = CMTimeGetSeconds(appDelegate.player.player.currentTime())
+      let playerDuration = CMTimeGetSeconds(self.appDelegate.player.player.currentItem.asset.duration)
+      
+      var frame = self.progressBarProgress.frame
+      frame.size.width = CGFloat(secondsNow / playerDuration) * self.progressBarBackground.frame.size.width
+      progressBarProgress.frame = frame
+      if playButton.tag == 0
+      {
+        appDelegate.player.player.play()
+        playButton.tag = 1
+        playButton.setBackgroundImage(UIImage(named: "pause_black"), forState: UIControlState.Normal)
+      }
+      else
+      {
+        appDelegate.player.player.pause()
+        playButton.tag = 0
+        playButton.setBackgroundImage(UIImage(named: "play_black"), forState: UIControlState.Normal)
+      }
+      
+
+    }
+    
+  }
+  
 }

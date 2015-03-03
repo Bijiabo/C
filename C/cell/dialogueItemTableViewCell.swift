@@ -24,7 +24,8 @@ class dialogueItemTableViewCell: UITableViewCell {
       }
     }
     
-    animationForTextView(textView: textView)
+    //animationForTextView(textView: textView)
+    animationForCellView(self.contentView)
   }
   
   override func awakeFromNib() {
@@ -54,7 +55,8 @@ class dialogueItemTableViewCell: UITableViewCell {
     let tapRecognizer : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "textViewTap:")
     textView.addGestureRecognizer(tapRecognizer)
     
-    animationForTextView(textView: textView)
+    //animationForTextView(textView: textView)
+    animationForCellView(self.contentView)
     
   }
   
@@ -67,6 +69,17 @@ class dialogueItemTableViewCell: UITableViewCell {
     ani.name = "showBubble"
     ani.delegate = self
     textView.pop_addAnimation(ani, forKey: "showBubble")
+  }
+  
+  func animationForCellView(view : UIView) -> Void {
+    //气泡动画
+    let ani : POPSpringAnimation = POPSpringAnimation(propertyNamed: kPOPLayerPositionX)
+    ani.springBounciness = 5
+    ani.springSpeed = 3
+    ani.fromValue = self.contentView.frame.width * (self.reuseIdentifier == "dialogueItem_left" ?  -1 :  1)
+    ani.name = "showBubble"
+    ani.delegate = self
+    view.pop_addAnimation(ani, forKey: "showBubble")
   }
   
   func textViewTap(sender : AnyObject) -> Void{
