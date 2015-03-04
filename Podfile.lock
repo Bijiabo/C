@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (1.1.4)
+  - GCD (0.2)
   - GCDWebServer (3.2.2):
     - GCDWebServer/Core (= 3.2.2)
   - GCDWebServer/Core (3.2.2)
@@ -8,12 +9,14 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 1.1)
+  - GCD (~> 0.2)
   - GCDWebServer (~> 3.0)
   - pop (~> 1.0)
   - SwiftyJSON (= 2.1.3)
 
 SPEC CHECKSUMS:
   Alamofire: 524225da382071ee3e6d0badd0ee4b4dc36740de
+  GCD: f9963281c3a9c501d00e057666c767395d7df32b
   GCDWebServer: 285fde9951ab2cd87c2d9d74735fee977a16fe04
   pop: 2f14a1ea61339767af9e66741b418c831b3844df
   SwiftyJSON: 48be7490a3989a58a3f511cd54167f0a2b466e76

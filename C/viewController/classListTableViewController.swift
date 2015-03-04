@@ -15,7 +15,7 @@ class classListTableViewController: UITableViewController, UIAlertViewDelegate {
   var classListData : JSON = JSON([])
   let syncDataInstance : syncData = syncData()
 	let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -169,5 +169,11 @@ class classListTableViewController: UITableViewController, UIAlertViewDelegate {
     }
   }
 
+
+  @IBAction func showRateOption(sender: AnyObject) {
+    let alert : UIAlertView = UIAlertView(title: "意见反馈", message: "您对我们产品的看法", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "五星好评", "ceshi")
+    alert.tag = 99
+    alert.show()
+  }
 
 }

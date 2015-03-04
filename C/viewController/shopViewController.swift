@@ -7,29 +7,46 @@
 //
 
 import UIKit
+import GCD
 
 class shopViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
 
   var shopInstance : shop!
   var refreshControl : UIRefreshControl!
   @IBOutlet var tableView: UITableView!
+  @IBOutlet var headerBackgroundImageView: UIImageView!
+  var indicator: MaterialActivityIndicatorView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.title = "shop"
+    
+    headerBackgroundImageView.backgroundColor = UIColor(red:0.96, green:0.97, blue:0.95, alpha:1)
+    
+    self.title = "Shop"
     
     tableView.estimatedRowHeight = UIFont.preferredFontForTextStyle(UIFontTextStyleBody).lineHeight
     tableView.rowHeight = UITableViewAutomaticDimension
-    
+    tableView.separatorStyle = UITableViewCellSeparatorStyle.None
     
     shopInstance = shop(shopVC: self)
-    
+    /*
     refreshControl = UIRefreshControl()
     refreshControl.addTarget(self, action: "handleRefresh", forControlEvents: UIControlEvents.ValueChanged)
     tableView.addSubview(refreshControl)
     
     refreshControl.beginRefreshing()
+    */
+    
+    gcd.async(.Main) {
+      self.indicator = MaterialActivityIndicatorView(style: .Large)
+      self.indicator.center = self.view.center
+      self.view.addSubview(self.indicator)
+      self.indicator.startAnimating()
+    }
+
+    
+    
   }
   
   func handleRefresh() -> Void {
@@ -43,7 +60,13 @@ class shopViewController: UIViewController , UITableViewDelegate, UITableViewDat
   }
   
   func didGetProductsList() -> Void{
-    refreshControl.endRefreshing()
+    println("didGetProductsList")
+    //refreshControl.endRefreshing()
+    
+    gcd.async(.Main) {
+      self.indicator.stopAnimating()
+    }
+    
     if shopInstance.products.count>0
     {
       var indexPaths : [AnyObject] = []
@@ -68,7 +91,6 @@ class shopViewController: UIViewController , UITableViewDelegate, UITableViewDat
     
     cell.goodTitle.text = shopInstance.products[indexPath.row]["title"] as String!
     cell.goodPrice.text = shopInstance.products[indexPath.row]["priceString"] as String!
-    cell.goodBuyButton.text = "购买"
     
     return cell
   }

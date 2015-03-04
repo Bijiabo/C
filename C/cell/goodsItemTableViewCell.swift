@@ -12,11 +12,11 @@ class goodsItemTableViewCell: UITableViewCell {
   
   @IBOutlet var goodTitle: UILabel!
   @IBOutlet var goodPrice: UILabel!
-  @IBOutlet var goodBuyButton: UILabel!
   
   override func awakeFromNib() {
     super.awakeFromNib()
 
+    
   }
   
   override func setSelected(selected: Bool, animated: Bool) {

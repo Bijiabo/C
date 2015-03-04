@@ -30,6 +30,8 @@
 		A16896F41A9DFF520046F806 /* syncData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16896F21A9DFF520046F806 /* syncData.swift */; };
 		A16896F71A9E03FF0046F806 /* classIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16896F61A9E03FF0046F806 /* classIntroViewController.swift */; };
 		A16896F81A9E03FF0046F806 /* classIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16896F61A9E03FF0046F806 /* classIntroViewController.swift */; };
+		A195B55A1AA77C95004133D1 /* MaterialActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A195B5591AA77C95004133D1 /* MaterialActivityIndicatorView.swift */; };
+		A195B55B1AA77C95004133D1 /* MaterialActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A195B5591AA77C95004133D1 /* MaterialActivityIndicatorView.swift */; };
 		A1B7FE5C1A9E1E3C005A72B4 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1D788851A9E17DD00CC7BF8 /* NotificationCenter.framework */; };
 		A1B7FE661A9E1E3C005A72B4 /* 皮蛋英语.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A1B7FE5B1A9E1E3C005A72B4 /* 皮蛋英语.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A1B7FE6B1A9E1E73005A72B4 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B7FE6A1A9E1E73005A72B4 /* TodayViewController.swift */; };
@@ -156,6 +158,7 @@
 		A16896E01A9DFE470046F806 /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = SQLite.swift/SQLite.xcodeproj; sourceTree = "<group>"; };
 		A16896F21A9DFF520046F806 /* syncData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = syncData.swift; sourceTree = "<group>"; };
 		A16896F61A9E03FF0046F806 /* classIntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = classIntroViewController.swift; path = viewController/classIntroViewController.swift; sourceTree = "<group>"; };
+		A195B5591AA77C95004133D1 /* MaterialActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialActivityIndicatorView.swift; sourceTree = "<group>"; };
 		A1B7FE5B1A9E1E3C005A72B4 /* 皮蛋英语.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "皮蛋英语.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1B7FE5F1A9E1E3C005A72B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1B7FE6A1A9E1E73005A72B4 /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -333,6 +336,7 @@
 				A16896F21A9DFF520046F806 /* syncData.swift */,
 				A1B7FE781A9E5CB0005A72B4 /* shop.swift */,
 				F9567B68498EC76A8F7D345B /* CPlayer.swift */,
+				A195B5591AA77C95004133D1 /* MaterialActivityIndicatorView.swift */,
 			);
 			path = publicClass;
 			sourceTree = "<group>";
@@ -687,6 +691,7 @@
 				A16896CE1A9CF6E40046F806 /* dialogueItemTableViewCell_right.swift in Sources */,
 				A156486E1A979BF900A1D635 /* webServer.swift in Sources */,
 				F95672DDF512E22D9264D437 /* jsonData.swift in Sources */,
+				A195B55A1AA77C95004133D1 /* MaterialActivityIndicatorView.swift in Sources */,
 				F95673FE8E42060F0D617962 /* CPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -702,6 +707,7 @@
 				A16896CC1A9CEF1C0046F806 /* dialogueItemTableViewCell_left.swift in Sources */,
 				A1B7FE7D1A9F2450005A72B4 /* goodsItemTableViewCell.swift in Sources */,
 				A1B7FE7A1A9E5CB0005A72B4 /* shop.swift in Sources */,
+				A195B55B1AA77C95004133D1 /* MaterialActivityIndicatorView.swift in Sources */,
 				A1B7FE701A9E410A005A72B4 /* shopViewController.swift in Sources */,
 				A1B7FE801A9F8DDF005A72B4 /* dialogueViewController.swift in Sources */,
 				F9567974FA44B9F0A44FA0E7 /* CTests.swift in Sources */,

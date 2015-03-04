@@ -67,7 +67,7 @@ class dialogueItemTableViewCell: UITableViewCell {
     ani.springSpeed = 3
     ani.fromValue = self.contentView.frame.width * (self.reuseIdentifier == "dialogueItem_left" ?  -1 :  1)
     ani.name = "showBubble"
-    ani.delegate = self
+    //ani.delegate = self
     textView.pop_addAnimation(ani, forKey: "showBubble")
   }
   

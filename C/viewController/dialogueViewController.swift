@@ -181,12 +181,13 @@ class dialogueViewController: UIViewController , UITableViewDelegate, UITableVie
       let progressAnimation : POPBasicAnimation = POPBasicAnimation()
       progressAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
       progressAnimation.property = POPAnimatableProperty.propertyWithName(kPOPViewFrame) as POPAnimatableProperty
-      //progressAnimation.fromValue = NSValue(CGRect:originalFrame)
+      progressAnimation.fromValue = NSValue(CGRect:originalFrame)
       progressAnimation.toValue = NSValue(CGRect:frame)
       progressAnimation.name = "progressAni"
-      progressAnimation.delegate = self
+      //progressAnimation.delegate = self
       progressAnimation.duration = 1.5
       self.progressBarProgress.pop_addAnimation(progressAnimation, forKey: "progressAni")
+      
     })
     
     //添加时间监听队列
